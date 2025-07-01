@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ... existing variables ... */
+  }
+
+  /* Improve focus visibility */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Hide focus rings on mouse input */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Ensure skip links are visible when focused */
+  .sr-only:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: normal;
+    width: auto;
+  }
+}
+
