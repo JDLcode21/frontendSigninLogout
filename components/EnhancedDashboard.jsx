@@ -9,7 +9,7 @@ import { ManagerDashboard } from "@/components/dashboards/manager-dashboard"
 import { HRAdminDashboard } from "@/components/dashboards/hr-admin-dashboard"
 
 export default function EnhancedDashboard() {
-  const { isRecruiter, isCandidate, isEmployee, isManager, isHRAdmin } = useRole()
+  const { role, isRecruiter, isCandidate, isEmployee, isManager, isHRAdmin } = useRole()
   const auth = useAuth()
   const userProfile = auth?.user?.profile
 
@@ -25,6 +25,7 @@ export default function EnhancedDashboard() {
       <p>Your email: {userProfile?.email}</p>
       <p>Phone number: {userProfile?.phone_number || "Not provided"}</p>
       <p>Preferred username: {userProfile?.preferred_username}</p>
+      <p>Role: {role}</p>
 
       {/* You can add more features/components here */}
       <hr />
