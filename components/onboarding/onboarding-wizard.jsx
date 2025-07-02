@@ -61,11 +61,12 @@ export function OnboardingWizard() {
         </div>
       </div>
 
-      <nav aria-label="Progress" className="hidden md:block">
-        <ol role="list" className="flex items-center justify-between">
+      <nav aria-label="Progress" className="hidden md:block w-full">
+        {/* Row 1: Circles and lines */}
+        <ol className="flex items-center justify-between w-full">
           {steps.map((step, index) => (
-            <li key={step.id} className="flex-1">
-              <div className="group relative flex items-center justify-center">
+            <li key={step.id} className="flex-1 flex items-center">
+              <div className="flex items-center justify-center w-full">
                 <span className={`flex h-9 w-9 items-center justify-center rounded-full border-2 text-sm font-medium
                   ${index <= currentStep 
                     ? "border-primary bg-primary text-primary-foreground"
@@ -74,18 +75,17 @@ export function OnboardingWizard() {
                 >
                   {index + 1}
                 </span>
-                <span className="absolute -bottom-6 w-32 text-center text-sm">
+                <span className="mt-2 w-32 text-center text-sm">
                   {step.title}
                 </span>
-                {index < steps.length - 1 && (
-                  <div className={`absolute left-[50%] h-[2px] w-full
-                    ${index < currentStep 
-                      ? "bg-primary"
-                      : "bg-muted-foreground/20"
-                    }`}
-                  />
-                )}
               </div>
+              {index < steps.length - 1 && (
+                <div className="flex-1 h-0.5 mx-2"
+                  style={{
+                    backgroundColor: index < currentStep ? 'var(--color-primary)' : 'rgba(0,0,0,0.1)'
+                  }}
+                />
+              )}
             </li>
           ))}
         </ol>

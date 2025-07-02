@@ -1,3 +1,4 @@
+"use client";
 import { PersonalDataForm } from "@/components/onboarding/forms/personal-data-form"
 
 export default function PersonalInformationPage() {

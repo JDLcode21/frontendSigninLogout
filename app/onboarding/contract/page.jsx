@@ -1,3 +1,4 @@
+"use client";
 import { ContractDetailsForm } from "@/components/onboarding/forms/contract-details-form"
 
 export default function ContractDetailsPage() {

@@ -1,3 +1,4 @@
+"use client";
 import { BankInformationForm } from "@/components/onboarding/forms/bank-information-form"
 
 export default function BankInformationPage() {

@@ -35,8 +35,18 @@ const formSchema = z.object({
   }),
   validation: z.object({
     requireReason: z.boolean(),
-    minDaysNotice: z.number().min(0),
-    maxDuration: z.number().min(1),
+    minDaysNotice: z
+      .number({
+        required_error: 'Please enter the minimum number of days before leave can start.',
+        invalid_type_error: 'Minimum notice period must be a valid number.'
+      })
+      .min(0, { message: 'Minimum notice period must be at least 0 days.' }),
+    maxDuration: z
+      .number({
+        required_error: 'Please enter the maximum number of days for a single leave request.',
+        invalid_type_error: 'Maximum duration must be a valid number.'
+      })
+      .min(1, { message: 'Maximum duration must be at least 1 day.' }),
     requireAttachments: z.boolean(),
     requireManagerApproval: z.boolean(),
   }),
@@ -199,6 +209,7 @@ export default function LeaveRequestFormConfig() {
                     <FormControl>
                       <Input
                         type="number"
+                        min={0}
                         {...field}
                         onChange={(e) => field.onChange(parseInt(e.target.value))}
                       />
@@ -220,6 +231,7 @@ export default function LeaveRequestFormConfig() {
                     <FormControl>
                       <Input
                         type="number"
+                        min={1}
                         {...field}
                         onChange={(e) => field.onChange(parseInt(e.target.value))}
                       />
